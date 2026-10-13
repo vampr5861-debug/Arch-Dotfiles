@@ -1,0 +1,97 @@
+/* MOMO / compact transparent launcher based on user's working Raycast configs */
+configuration {
+    modi: "drun,run,window";
+    show-icons: true;
+    terminal: "kitty";
+    font: "JetBrainsMono Nerd Font 13";
+    matching: "fuzzy";
+    sort: false;
+    disable-history: false;
+    cycle: true;
+    sidebar-mode: false;
+    display-drun: "Apps";
+    display-run: "Run";
+    display-window: "Windows";
+    drun-display-format: "{name}";
+}
+* {
+    panel: #1a1c23e4;
+    text-main: #e8e3d8;
+    text-dim: #a1a5af;
+    outline: #ffffff24;
+    active: #ffffff1f;
+    background-color: transparent;
+    text-color: @text-main;
+}
+window {
+    location: center;
+    anchor: center;
+    width: 700px;
+    padding: 0px;
+    border: 1px solid;
+    border-color: @outline;
+    border-radius: 14px;
+    background-color: @panel;
+}
+mainbox {
+    children: [ inputbar, listview, mode-switcher ];
+    spacing: 0px;
+    padding: 0px;
+    background-color: transparent;
+}
+inputbar {
+    children: [ prompt, entry ];
+    padding: 16px 18px;
+    spacing: 13px;
+    border: 0px 0px 1px 0px;
+    border-color: @outline;
+    background-color: #17191fc8;
+}
+prompt { text-color: @text-dim; background-color: transparent; }
+entry {
+    placeholder: "Search applications...";
+    placeholder-color: @text-dim;
+    text-color: @text-main;
+    background-color: transparent;
+}
+listview {
+    lines: 10;
+    columns: 1;
+    layout: vertical;
+    spacing: 3px;
+    padding: 10px;
+    fixed-height: false;
+    dynamic: true;
+    scrollbar: false;
+    background-color: transparent;
+}
+element {
+    children: [ element-icon, element-text ];
+    orientation: horizontal;
+    spacing: 12px;
+    padding: 9px 12px;
+    border-radius: 8px;
+    background-color: transparent;
+    text-color: @text-main;
+}
+element normal.normal, element alternate.normal { background-color: transparent; }
+element selected.normal, element selected.active, element selected.urgent {
+    background-color: @active;
+    text-color: @text-main;
+}
+element-icon { size: 23px; background-color: transparent; }
+element-text { text-color: inherit; background-color: transparent; }
+mode-switcher {
+    padding: 8px 10px;
+    spacing: 6px;
+    border: 1px 0px 0px 0px;
+    border-color: @outline;
+    background-color: #1113198e;
+}
+button {
+    padding: 6px 12px;
+    border-radius: 7px;
+    background-color: #ffffff0a;
+    text-color: @text-dim;
+}
+button selected { background-color: @active; text-color: @text-main; }

@@ -1,0 +1,98 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    "type": "builtin",
+    "source": "arch",
+    "padding": {
+      "top": 2,
+      "left": 2,
+      "right": 6
+    },
+    "color": {
+      "1": "38;2;55;225;225",
+      "2": "38;2;55;225;225"
+    }
+  },
+  "display": {
+    "separator": "  ",
+    "color": {
+      "keys": "38;2;165;180;180",
+      "title": "38;2;55;225;225",
+      "output": "38;2;232;232;225",
+      "separator": "38;2;100;115;115"
+    },
+    "key": {
+      "width": 13
+    },
+    "percent": {
+      "type": 9
+    }
+  },
+  "modules": [
+    {
+      "type": "os",
+      "key": "OS"
+    },
+    {
+      "type": "kernel",
+      "key": "Kernel"
+    },
+    {
+      "type": "packages",
+      "key": "Packages"
+    },
+    {
+      "type": "uptime",
+      "key": "Uptime"
+    },
+    {
+      "type": "wm",
+      "key": "WM"
+    },
+    {
+      "type": "shell",
+      "key": "Shell"
+    },
+    {
+      "type": "terminal",
+      "key": "Terminal"
+    },
+    {
+      "type": "display",
+      "key": "Display",
+      "format": "{width}x{height} @ {refresh-rate} Hz"
+    },
+    {
+      "type": "host",
+      "key": "Host"
+    },
+    {
+      "type": "cpu",
+      "key": "CPU"
+    },
+    {
+      "type": "gpu",
+      "key": "GPU"
+    },
+    {
+      "type": "memory",
+      "key": "Memory"
+    },
+    {
+      "type": "swap",
+      "key": "Swap"
+    },
+    {
+      "type": "disk",
+      "key": "Disk",
+      "folders": "/"
+    },
+    {
+      "type": "colors",
+      "key": "Colors",
+      "keyColor": "38;2;165;180;180",
+      "symbol": "circle",
+      "paddingLeft": 1
+    }
+  ]
+}
