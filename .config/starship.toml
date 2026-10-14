@@ -1,0 +1,17 @@
+# MOMO: fast prompt with no custom commands or shell hooks
+add_newline = false
+format = "$directory$git_branch$git_status$character"
+
+[directory]
+style = "bold white"
+truncation_length = 3
+
+[git_branch]
+style = "dimmed white"
+
+[git_status]
+style = "dimmed white"
+
+[character]
+success_symbol = "[❯](bold white)"
+error_symbol = "[❯](bold red)"

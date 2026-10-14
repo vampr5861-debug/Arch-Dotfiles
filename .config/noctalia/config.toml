@@ -99,6 +99,9 @@ center = [
 # Control Center is available on Super + S.
 
 end = [
+    "cpu",
+    "gpu",
+    "ram",
     "tray",
     "network",
     "bluetooth",
@@ -159,7 +162,7 @@ capsule_radius = 14
 
 [widget.clock]
 
-format = "{:%H:%M}"
+format = "{:%H:%M:%S  %d.%m.%Y}"
 tooltip_format = "{:%A, %d %B %Y}"
 
 capsule = true
@@ -259,3 +262,22 @@ capsule_opacity = 0.55
 capsule_padding = 8
 capsule_radius = 10
 
+
+# Built-in metrics; no external polling scripts.
+[system.monitor]
+enabled = true
+cpu_poll_seconds = 2.0
+gpu_poll_seconds = 5.0
+memory_poll_seconds = 2.0
+
+[widget.cpu]
+type = "sysmon"
+stat = "cpu_temp"
+
+[widget.gpu]
+type = "sysmon"
+stat = "gpu_temp"
+
+[widget.ram]
+type = "sysmon"
+stat = "ram_pct"
