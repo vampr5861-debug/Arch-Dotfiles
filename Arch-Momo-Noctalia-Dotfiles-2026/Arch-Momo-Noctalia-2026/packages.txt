@@ -1,0 +1,25 @@
+# Official Arch Linux packages, install when needed, NOT installed by this bundle.
+# KDE/SDDM and the main NVIDIA driver should be installed/configured separately via archinstall.
+# Core Hyprland utilities:
+hyprland
+noctalia
+kitty
+rofi
+thunar
+firefox
+fish
+starship
+fastfetch
+playerctl
+grim
+slurp
+hyprlock
+pavucontrol
+pipewire
+wireplumber
+networkmanager
+xdg-desktop-portal-hyprland
+xdg-desktop-portal-gtk
+polkit-kde-agent
+ttf-jetbrains-mono-nerd
+# Optional: noto-fonts, noto-fonts-emoji, ttf-dejavu.

@@ -1,0 +1,213 @@
+/*
+ * Rofi / Raycast-inspired minimalist launcher for 2560x1440
+ * Based on the user's original configuration and raycast-fixed.rasi.
+ * Preview safely: rofi -config /path/to/rofi-raycast-refined.rasi -show drun
+ * The footer mode tabs are real Rofi mode-switcher buttons.
+ */
+
+configuration {
+    modi: "drun,combi,calc";
+    combi-modes: "drun,window,run";
+    display-drun: "Apps";
+    display-combi: "All";
+    display-calc: "Calc";
+    display-window: "Window";
+    display-run: "Run";
+    combi-display-format: "{mode}  {text}";
+
+    show-icons: true;
+    terminal: "kitty";
+    drun-display-format: "{name}";
+    font: "JetBrainsMono Nerd Font 13";
+
+    matching: "fuzzy";
+    sort: false;
+    disable-history: false;
+    max-history-size: 50;
+    cycle: true;
+    sidebar-mode: false;
+}
+
+* {
+    panel:          #1a1c23de;
+    search-bg:      #17191fb0;
+    footer-bg:      #11131970;
+    row-bg:         #00000000;
+    row-active:     #ffffff19;
+    text-main:      #e8e3d8;
+    text-dim:       #a0a5b0;
+    outline:        #ffffff1f;
+    tab-bg:         #ffffff0b;
+    tab-current:    #ffffff24;
+
+    background-color: transparent;
+    text-color: @text-main;
+}
+
+/* A little under half the 2560 px screen, never fullscreen. */
+window {
+    location: center;
+    anchor: center;
+    width: 1040px;
+    padding: 0px;
+    border: 1px solid;
+    border-color: @outline;
+    border-radius: 16px;
+    background-color: @panel;
+}
+
+mainbox {
+    orientation: vertical;
+    spacing: 0px;
+    padding: 0px;
+    children: [ inputbar, listview, footer ];
+    background-color: transparent;
+}
+
+/* Search line sits in the panel rather than inside a rounded inset box. */
+inputbar {
+    expand: false;
+    orientation: horizontal;
+    children: [ entry, num-filtered-rows ];
+    padding: 0px;
+    spacing: 0px;
+    border: 0px 0px 1px solid 0px;
+    border-color: @outline;
+    background-color: @search-bg;
+}
+
+entry {
+    expand: true;
+    padding: 16px 18px;
+    placeholder: "Type to search...";
+    placeholder-color: @text-dim;
+    text-color: @text-main;
+    background-color: transparent;
+}
+
+/* Live count of matches (a real, built-in Rofi widget). */
+num-filtered-rows {
+    expand: false;
+    padding: 16px 19px 16px 6px;
+    vertical-align: 0.5;
+    font: "JetBrainsMono Nerd Font 11";
+    text-color: @text-dim;
+    background-color: transparent;
+}
+
+listview {
+    lines: 11;
+    columns: 1;
+    layout: vertical;
+    spacing: 4px;
+    padding: 9px 10px;
+    border: 0px;
+    fixed-height: false;
+    dynamic: true;
+    scrollbar: false;
+    cycle: true;
+    background-color: transparent;
+}
+
+element {
+    orientation: horizontal;
+    children: [ element-icon, element-text, textbox-category ];
+    spacing: 13px;
+    padding: 9px 12px;
+    border: 0px;
+    border-radius: 8px;
+    background-color: @row-bg;
+    text-color: @text-main;
+}
+
+/* Explicit row state colors prevent the stock theme's white boxes. */
+element normal.normal,
+element alternate.normal,
+element normal.active,
+element alternate.active,
+element normal.urgent,
+element alternate.urgent {
+    background-color: @row-bg;
+    text-color: @text-main;
+}
+
+element selected.normal,
+element selected.active,
+element selected.urgent {
+    background-color: @row-active;
+    text-color: @text-main;
+}
+
+element-icon {
+    expand: false;
+    size: 26px;
+    vertical-align: 0.5;
+    background-color: transparent;
+}
+
+element-text {
+    expand: true;
+    vertical-align: 0.5;
+    text-color: inherit;
+    background-color: transparent;
+}
+
+/* Cosmetic category label; Rofi cannot infer the mode for this custom widget. */
+textbox-category {
+    expand: false;
+    content: "Application";
+    font: "JetBrainsMono Nerd Font 10";
+    vertical-align: 0.5;
+    text-color: @text-dim;
+    background-color: transparent;
+}
+
+/* Bottom bar: actual mode selectors + unobtrusive keyboard help. */
+footer {
+    expand: false;
+    orientation: horizontal;
+    children: [ mode-switcher, textbox-fill, textbox-shortcuts ];
+    spacing: 12px;
+    padding: 9px 14px;
+    border: 1px solid 0px 0px 0px;
+    border-color: @outline;
+    background-color: @footer-bg;
+}
+
+mode-switcher {
+    expand: false;
+    orientation: horizontal;
+    spacing: 5px;
+    background-color: transparent;
+}
+
+button {
+    expand: false;
+    padding: 7px 13px;
+    border: 0px;
+    border-radius: 7px;
+    background-color: @tab-bg;
+    text-color: @text-dim;
+    font: "JetBrainsMono Nerd Font 11";
+    vertical-align: 0.5;
+}
+
+button selected {
+    background-color: @tab-current;
+    text-color: @text-main;
+}
+
+textbox-fill {
+    expand: true;
+    content: " ";
+    background-color: transparent;
+}
+
+textbox-shortcuts {
+    expand: false;
+    content: "Enter  Open     Up/Down  Navigate     Esc  Close";
+    font: "JetBrainsMono Nerd Font 10";
+    vertical-align: 0.5;
+    text-color: @text-dim;
+    background-color: transparent;
+}
